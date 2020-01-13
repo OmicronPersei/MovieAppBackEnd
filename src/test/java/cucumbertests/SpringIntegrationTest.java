@@ -1,4 +1,4 @@
-package CucumberTests;
+package cucumbertests;
 
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;

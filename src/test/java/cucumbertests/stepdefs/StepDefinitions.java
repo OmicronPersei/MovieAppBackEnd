@@ -1,5 +1,6 @@
-package CucumberTests;
+package cucumbertests.stepdefs;
 
+import cucumbertests.SpringIntegrationTest;
 import cucumber.api.java.en.When;
 
 import java.io.DataOutputStream;
