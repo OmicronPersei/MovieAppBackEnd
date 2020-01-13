@@ -1,7 +1,6 @@
 package CucumberTests;
 
 import cucumber.api.java.en.When;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
