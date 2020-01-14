@@ -65,6 +65,4 @@ public class StepDefinitions extends SpringIntegrationTest {
     public void theClientShouldBeConnectedToTheCorrectURL() {
         assertThat(con.getURL().toString()).isEqualTo("http://localhost:8080/home");
     }
-
-
 }
