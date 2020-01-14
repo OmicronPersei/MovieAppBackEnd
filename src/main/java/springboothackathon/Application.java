@@ -10,7 +10,7 @@ import springboothackathon.controllers.HomeController;
 
 import java.util.Arrays;
 
-@SpringBootApplication(scanBasePackages = {"controllers"})
+@SpringBootApplication(scanBasePackages = {"springboothackathon.controllers", "springboothackathon.services", "springboothackathon.models"})
 @ComponentScan(basePackageClasses = HomeController.class)
 public class Application {
     public static void main(String[] args) {
