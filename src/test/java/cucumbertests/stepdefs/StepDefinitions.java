@@ -24,17 +24,18 @@ public class StepDefinitions extends SpringIntegrationTest {
     int resCode;
     URL url;
     StringBuffer response;
+    HttpURLConnection con;
 
     @Given("^the server is running$")
     public void the_server_is_running()  {
         SpringApplication.run(Application.class);
     }
 
-    @When("^the client calls home controller$")
-    public void the_client_calls_home_controller() throws IOException {
+    @When("^the client performs a get call on home controller$")
+    public void theClientPerformsAGetCallOnHomeController()  throws IOException {
         url = new URL("http://localhost:8080/home");
         String readLine = null;
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         resCode = con.getResponseCode();
 
@@ -59,4 +60,11 @@ public class StepDefinitions extends SpringIntegrationTest {
     public void theClientReceivesTheResponseStringGreetingsFromSpringBoot() {
         assertThat(response.toString()).isEqualTo("Greetings from Spring Boot!");
     }
+
+    @Then("^the client should be connected to the correct URL$")
+    public void theClientShouldBeConnectedToTheCorrectURL() {
+        assertThat(con.getURL().toString()).isEqualTo("http://localhost:8080/home");
+    }
+
+
 }
