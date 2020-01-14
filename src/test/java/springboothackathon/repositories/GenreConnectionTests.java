@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,6 +40,7 @@ public class GenreConnectionTests {
         }
         catch (Exception e) {
             StandardServiceRegistryBuilder.destroy(registry);
+            Assert.fail();
         }
     }
 

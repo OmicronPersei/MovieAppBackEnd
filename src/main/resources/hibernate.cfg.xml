@@ -15,7 +15,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://104.154.209.1/movies-rdb</property>
+        <property name="connection.url">jdbc:mysql://104.154.209.1/</property>
         <property name="connection.username">root</property>
         <property name="connection.password">k1m26DJGCHpJ0POz</property>
 
