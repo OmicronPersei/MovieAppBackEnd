@@ -13,5 +13,5 @@ Feature: Testing the movie API
     Then the client receives the response string Greetings from Spring Boot!
 
     Then the client should be connected to the correct URL
-    
-    Then the client
+
+    Then the client should be performing a GET call
