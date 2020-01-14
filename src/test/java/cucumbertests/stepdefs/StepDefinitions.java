@@ -31,13 +31,15 @@ public class StepDefinitions extends SpringIntegrationTest {
         SpringApplication.run(Application.class);
     }
 
-    @When("^the client performs a get call on home controller$")
-    public void theClientPerformsAGetCallOnHomeController()  throws IOException {
+    @When("^the client performs a GET call on home controller$")
+    public void theClientPerformsAGETCallOnHomeController()  throws IOException {
         url = new URL("http://localhost:8080/home");
         String readLine = null;
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         resCode = con.getResponseCode();
+
+
 
         if (resCode == HttpURLConnection.HTTP_OK) {
             BufferedReader in = new BufferedReader(
