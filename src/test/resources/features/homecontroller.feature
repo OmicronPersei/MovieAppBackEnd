@@ -5,11 +5,11 @@ Feature: Testing the movie API
     Given the server is running
     When the client performs a get call on home controller
 
-  Scenario: Call Homepage
-  client should see a success response when calling home controller
+  Scenario: Get Call on Homepage
+  client receives a correct response when they perform a get call on the Homepage.
 
     Then the client gets a success response
 
     Then the client receives the response string Greetings from Spring Boot!
-    
+
     Then the client should be connected to the correct URL
