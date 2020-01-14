@@ -55,6 +55,21 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- dependencies from hibernate tutorial -->
+        <!-- https://howtodoinjava.com/hibernate/hibernate-3-introduction-and-writing-hello-world-application/ -->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-agroal</artifactId>
+            <version>5.3.15.Final</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
