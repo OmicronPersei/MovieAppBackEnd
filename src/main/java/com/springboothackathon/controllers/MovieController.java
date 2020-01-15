@@ -1,7 +1,7 @@
-package springboothackathon.controllers;
+package com.springboothackathon.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import springboothackathon.models.Movie;
+import com.springboothackathon.models.Movie;
 
 @RestController
 @RequestMapping(value = "/movies")

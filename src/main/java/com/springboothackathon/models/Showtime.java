@@ -1,4 +1,4 @@
-package springboothackathon.models;
+package com.springboothackathon.models;
 
 public class Showtime {
     private int id;

@@ -1,18 +1,18 @@
-package springboothackathon.controllers;
+package com.springboothackathon.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import springboothackathon.models.Genre;
+import com.springboothackathon.models.Showtime;
 
 @RestController
-@RequestMapping(value = "/genres")
-public class GenreController {
+@RequestMapping(value = "/showtimes")
+public class ShowtimeController {
     @GetMapping()
-    public Genre[] getTheaters() {
+    public Showtime[] getTheaters() {
         return null;
     }
 
     @GetMapping("/{id}")
-    public Genre findById(@PathVariable("id") int id) {
+    public Showtime findById(@PathVariable("id") int id) {
         return null;
     }
 

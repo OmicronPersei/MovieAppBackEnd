@@ -1,4 +1,4 @@
-package springboothackathon.controllers;
+package com.springboothackathon.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc //tells spring boot not to load the entire webserver and context, but to mock the server
-class TheaterControllerTest {
+class HomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -30,7 +30,7 @@ class TheaterControllerTest {
 }
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TheaterControllerWithMockedWebServer{
+class HomeControllerWithMockedWebServer{
 
     @LocalServerPort
     private int port;

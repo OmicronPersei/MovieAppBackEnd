@@ -1,29 +1,18 @@
-package springboothackathon.controllers;
+package com.springboothackathon.controllers;
 
+import com.springboothackathon.models.Genre;
 import org.springframework.web.bind.annotation.*;
-import springboothackathon.models.Theater;
-import springboothackathon.services.TheaterService;
-
-import java.util.ArrayList;
 
 @RestController
-@RequestMapping(value = "/theaters")
-public class TheaterController {
-
-    private TheaterService service;
-
-    public TheaterController(TheaterService service) {
-
-        this.service = service;
-    }
+@RequestMapping(value = "/genres")
+public class GenreController {
     @GetMapping()
-    public ArrayList<Theater> getTheaters()
-    {
+    public Genre[] getTheaters() {
         return null;
     }
 
     @GetMapping("/{id}")
-    public Theater findById(@PathVariable("id") int id) {
+    public Genre findById(@PathVariable("id") int id) {
         return null;
     }
 
