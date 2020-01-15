@@ -6,7 +6,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumbertests.SpringIntegrationTest;
 import org.springframework.boot.SpringApplication;
-import springboothackathon.Application;
 
 import java.io.BufferedReader;
 import java.io.IOException;

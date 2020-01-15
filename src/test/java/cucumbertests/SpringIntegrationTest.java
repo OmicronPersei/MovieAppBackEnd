@@ -1,16 +1,14 @@
 package cucumbertests;
 
+import com.springboothackathon.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootContextLoader;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import springboothackathon.Application;
-
-
 @ContextConfiguration(
-        classes = Application.class,
+        classes = SpringBootApplication.class,
         loader = SpringBootContextLoader.class)
-@SpringBootTest(classes = Application.class,
+@SpringBootTest(classes = SpringBootApplication.class,
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringIntegrationTest {
 

@@ -1,4 +1,4 @@
-package springboothackathon.controllers;
+package com.springboothackathon.controllers;
 
 
 import org.junit.jupiter.api.Test;

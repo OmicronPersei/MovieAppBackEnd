@@ -6,7 +6,6 @@ import cucumbertests.SpringIntegrationTest;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.springframework.boot.SpringApplication;
-import springboothackathon.Application;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
