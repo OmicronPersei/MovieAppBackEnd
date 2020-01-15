@@ -25,11 +25,6 @@ public class StepDefinitions extends SpringIntegrationTest {
     URL url;
     StringBuffer response;
 
-    @Given("^the server is running$")
-    public void the_server_is_running()  {
-        SpringApplication.run(Application.class);
-    }
-
     @When("^the client calls home controller$")
     public void the_client_calls_home_controller() throws IOException {
         url = new URL("http://localhost:8080/home");

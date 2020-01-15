@@ -19,10 +19,6 @@ public class MovieControllerStepDefs extends SpringIntegrationTest {
     int resCode;
     URL url;
     StringBuffer response;
-    @Given("^the server is running$")
-    public void the_server_is_running()  {
-        SpringApplication.run(Application.class);
-    }
 
     @When("^client calls movie controller$")
     public void client_calls_movie_controller() throws IOException {
