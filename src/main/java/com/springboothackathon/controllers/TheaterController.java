@@ -1,5 +1,7 @@
 package com.springboothackathon.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.springboothackathon.models.Theater;
 import com.springboothackathon.services.TheaterService;
@@ -27,10 +29,11 @@ public class TheaterController {
         return service.getTheaterById(id);
     }
 
-    @PostMapping(value = "/add", method = "")
-    public void add(@RequestBody Theater theater){
+    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    public ResponseEntity add(@RequestBody Theater theater){
 
-         service.addTheater(theater);
+          service.addTheater(theater);
+          return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

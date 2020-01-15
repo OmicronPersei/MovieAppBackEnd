@@ -25,7 +25,6 @@ class HomeControllerTest {
         mockMvc.perform(get("/home"))
                 .andDo(print())
                 .andExpect(status().isOk());
-
     }
 }
 

@@ -1,5 +1,6 @@
 package com.springboothackathon.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboothackathon.models.Theater;
 import com.springboothackathon.services.TheaterService;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +79,9 @@ public class TheaterControllerTests {
 
         mockMvc.perform(get("/theaters/id")
                 .param("id", Integer.toString(id)))
-                .andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString("bill"))).andReturn().getResponse().getContentAsString();
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("bill")))
+                .andReturn().getResponse().getContentAsString();
     }
 
     @Test
@@ -88,8 +93,21 @@ public class TheaterControllerTests {
         theater.setLatitude(123L);
         theater.setId(1234);
 
-        mockMvc.perform(post("/theaters/add")).andDo(print()).andExpect(status().isOk());
+        mockMvc.perform(post("/theaters/add")
+        .content(asJsonString(theater))
+        .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andDo(print());
 
-        verify(service, times(1)).addTheater(theater);
+        verify(service, times(1)).addTheater(any(Theater.class));
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
