@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumbertests.SpringIntegrationTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 
 import java.io.BufferedReader;
@@ -14,6 +15,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MovieControllerStepDefs extends SpringIntegrationTest {
+
+    @Autowired
+    AppHttpClient appHttpClient;
 
     StringBuffer response;
 
