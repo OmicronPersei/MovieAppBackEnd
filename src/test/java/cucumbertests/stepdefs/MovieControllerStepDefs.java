@@ -15,29 +15,7 @@ import java.net.URL;
 
 public class MovieControllerStepDefs extends SpringIntegrationTest {
 
-    int resCode;
-    URL url;
     StringBuffer response;
-
-    @When("^client calls movie controller$")
-    public void client_calls_movie_controller() throws IOException {
-        url = new URL("http://localhost:8080/movies");
-        String readLine = null;
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        resCode = con.getResponseCode();
-
-        if (resCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            response = new StringBuffer();
-            while ((readLine = in .readLine()) != null) {
-                response.append(readLine);
-            } in .close();
-        } else {
-            System.out.println("GET NOT WORKED");
-        }
-    }
 
     @Then("^client receives a list of all movies$")
     public void client_receives_a_list_of_all_movies() throws Throwable {
