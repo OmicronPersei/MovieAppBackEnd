@@ -1,0 +1,58 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 4,
+        "name": "Call Homepage",
+        "description": "users should see a response when calling home controller",
+        "id": "testing-the-movie-api;call-homepage",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 119672900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the server is running",
+            "match": {
+              "location": "StepDefinitions.theServerIsRunning()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 7444000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the client calls home controller",
+            "match": {
+              "location": "StepDefinitions.getStuff()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 42459400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "the client receives a response",
+            "match": {
+              "location": "StepDefinitions.theClientReceivesAResponse()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Testing the movie API",
+    "description": "User should be able to query for a movie.",
+    "id": "testing-the-movie-api",
+    "keyword": "Feature",
+    "uri": "homecontroller.feature"
+  }
+]
