@@ -1,10 +1,9 @@
 package springboothackathon.models;
 
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="GENRES")
+@Table(name="Genres")
 public class Genre {
 
     @Id
