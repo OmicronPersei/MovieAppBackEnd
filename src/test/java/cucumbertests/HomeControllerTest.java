@@ -6,8 +6,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/features/home",
-    glue = "cucumbertests.stepdefs")
+@CucumberOptions(features = "src/test/resources/features")
 public class HomeControllerTest {
 
 }
