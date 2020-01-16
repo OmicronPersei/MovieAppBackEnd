@@ -19,5 +19,5 @@ public class RepositoryConfig {
     }
 
     @Bean
-    public MovieRepository getMovieRepository() { return new MovieRepositoryImpl(movieTableAccess); }
+    public MovieRepository getMovieRepository() { return new MovieRepositoryImpl(movieTableAccess, getGenreRepository()); }
 }

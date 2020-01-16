@@ -20,7 +20,7 @@ public class Movie {
     private String imageFile;
 
     @Column(name="GenreId")
-    private Long GenreId;
+    private Long genreId;
 
     @Transient
     private String genreName;
@@ -63,5 +63,13 @@ public class Movie {
 
     public void setGenreName(String value) {
         genreName = value;
+    }
+
+    public Long getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(Long value) {
+        genreId = value;
     }
 }
