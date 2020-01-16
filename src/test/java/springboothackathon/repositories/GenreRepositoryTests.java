@@ -10,12 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class GenreRepositoryTests {
@@ -39,8 +37,6 @@ public class GenreRepositoryTests {
         List<Genre> genresFromDb = new ArrayList<>();
         genresFromDb.add(expectedReturnObj);
 
-//        when(mockedGenreReository.findAll().stream().filter(expectedPredicate)).thenReturn(genresFromDb.stream());
-
         List<Genre> listReturnedFromFindAll = mock(List.class);
         when(mockedGenreTableAccess.findAll()).thenReturn(listReturnedFromFindAll);
 
@@ -52,9 +48,18 @@ public class GenreRepositoryTests {
 
         when(streamReturnedFromFilter.collect(Mockito.any(Collector.class))).thenReturn(genresFromDb);
 
-        List<Genre> actual = genreRepository.Get(expectedPredicate);
+        List<Genre> actual = genreRepository.get(expectedPredicate);
 
         assertEquals(1, actual.size());
         assertEquals(expectedReturnObj, actual.get(0));
+    }
+
+    @Test
+    public void testAddGenre() {
+        Genre genreToAdd = new Genre();
+
+        genreRepository.add(genreToAdd);
+
+        verify(mockedGenreTableAccess).save(genreToAdd);
     }
 }

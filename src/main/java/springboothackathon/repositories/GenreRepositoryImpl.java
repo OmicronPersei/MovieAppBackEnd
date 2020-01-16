@@ -16,7 +16,7 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
     @Override
-    public List<Genre> Get(Predicate<Genre> p) {
+    public List<Genre> get(Predicate<Genre> p) {
         List<Genre> fromFindAll = genreTableAccess.findAll();
         Stream<Genre> streamFromFindAll = fromFindAll.stream();
         Stream<Genre> streamFromStream = streamFromFindAll.filter(p);
@@ -27,17 +27,17 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
     @Override
-    public void Add(Genre item) {
+    public void add(Genre item) {
+        genreTableAccess.save(item);
+    }
+
+    @Override
+    public void update(Genre item) {
 
     }
 
     @Override
-    public void Update(Genre item) {
-
-    }
-
-    @Override
-    public void Delete(Predicate<Genre> p) {
+    public void delete(Predicate<Genre> p) {
 
     }
 }

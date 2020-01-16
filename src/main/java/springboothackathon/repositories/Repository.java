@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public interface Repository<T> {
-    List<T> Get(Predicate<T> p);
-    void Add(T item);
-    void Update(T item);
-    void Delete(Predicate<T> p);
+    List<T> get(Predicate<T> p);
+    void add(T item);
+    void update(T item);
+    void delete(Predicate<T> p);
 }
