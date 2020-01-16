@@ -27,7 +27,6 @@ public class MovieTableAccessIntegrationTests {
         newMovie.setGenreId(1L);
 
         movieTableAccess.save(newMovie);
-        movieTableAccess.flush();
 
         Movie retrievedMovie = movieTableAccess
                 .findAll()

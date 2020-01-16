@@ -22,7 +22,6 @@ public class GenreTableAccessIntegrationTests {
         newGenre.setName("myNewGenre");
 
         genreTableAccess.save(newGenre);
-        genreTableAccess.flush();
 
         Genre savedGenre = genreTableAccess
                 .findAll()
