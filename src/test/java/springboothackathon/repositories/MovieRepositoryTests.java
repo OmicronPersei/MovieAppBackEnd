@@ -9,13 +9,14 @@ import springboothackathon.models.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class MovieRepositoryTests {
@@ -66,5 +67,48 @@ public class MovieRepositoryTests {
         assertEquals(1, actual.size());
         assertEquals(expectedReturnObj, actual.get(0));
         assertEquals(genreName, actual.get(0).getGenreName());
+    }
+
+    @Test
+    public void testGetMovieById()
+    {
+        Long id = 123421L;
+        Long genreId = 1398438L;
+        String genreName = "action";
+        Genre correspondingGenre = new Genre();
+        correspondingGenre.setName(genreName);
+        Movie movie = new Movie();
+        movie.setGenreId(genreId);
+        Optional<Movie> movieOptional = Optional.of(movie);
+
+        when(mockedMovieTableAccess.findById(id)).thenReturn(movieOptional);
+        when(mockedGenreRepository.getById(genreId)).thenReturn(correspondingGenre);
+
+        Movie actual = movieRepository.getById(id);
+
+        assertSame(movie, actual);
+        assertEquals(genreName, actual.getGenreName());
+    }
+
+    @Test
+    public void testUpdateMovie()
+    {
+        String genreName = "action";
+        Movie m = new Movie();
+        m.setGenreName(genreName);
+
+//        Predicate<Genre> expectedPredicate = g -> g.getName().equals(genreName);
+
+        List<Genre> matchingGenres = new ArrayList<Genre>();
+        Genre matchingGenre = new Genre();
+        Long genreId = 9832L;
+        matchingGenre.setId(genreId);
+        matchingGenres.add(matchingGenre);
+        when(mockedGenreRepository.get(Mockito.any(Predicate.class))).thenReturn(matchingGenres);
+
+        movieRepository.update(m);
+
+        assertEquals(genreId, m.getGenreId());
+        verify(mockedMovieTableAccess).save(m);
     }
 }

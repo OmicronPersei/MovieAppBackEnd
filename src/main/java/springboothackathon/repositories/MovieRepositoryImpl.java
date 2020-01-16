@@ -4,6 +4,7 @@ import springboothackathon.models.Genre;
 import springboothackathon.models.Movie;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,16 +28,31 @@ public class MovieRepositoryImpl implements MovieRepository {
 
         for (Movie m : resultSetListFromStream)
         {
-            Genre g = genreRepository.getById(m.getGenreId());
-            m.setGenreName(g.getName());
+            PopulateGenreName(m);
         }
 
         return resultSetListFromStream;
     }
 
+    private void PopulateGenreName(Movie m)
+    {
+        Genre g = genreRepository.getById(m.getGenreId());
+        m.setGenreName(g.getName());
+    }
+
     @Override
     public Movie getById(Long aLong) {
-        return null;
+        Optional<Movie> movieOptional = movieTableAccess.findById(aLong);
+
+        if (movieOptional.isEmpty() == true) {
+            return null;
+        }
+
+        Movie m = movieOptional.get();
+
+        PopulateGenreName(m);
+
+        return m;
     }
 
     @Override
@@ -46,7 +62,14 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public void update(Movie item) {
+        String genreName = item.getGenreName();
+        Genre correspondingGenre = genreRepository.get(g -> g.getName().equals(genreName)).get(0);
 
+        Long genreId = correspondingGenre.getId();
+
+        item.setGenreId(genreId);
+
+        movieTableAccess.save(item);
     }
 
     @Override
