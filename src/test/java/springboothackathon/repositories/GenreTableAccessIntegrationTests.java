@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import springboothackathon.models.Genre;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class GenreTableAccessIntegrationTests {
@@ -17,10 +18,20 @@ public class GenreTableAccessIntegrationTests {
 
     @Test
     public void testGetGenres() {
-        List<Genre> allGenres = genreTableAccess.findAll();
+        Genre newGenre = new Genre();
+        newGenre.setName("myNewGenre");
 
-        assertTrue(allGenres.stream().anyMatch(g -> g.getName().equals("action")));
-        assertTrue(allGenres.stream().anyMatch(g -> g.getName().equals("drama")));
+        genreTableAccess.save(newGenre);
+        genreTableAccess.flush();
 
+        Genre savedGenre = genreTableAccess
+                .findAll()
+                .stream().filter(g -> g.getName().equals("myNewGenre"))
+                .findFirst()
+                .get();
+
+        assertNotNull(savedGenre);
+        assertEquals("myNewGenre", savedGenre.getName());
+        assertNotEquals(0, savedGenre.getId());
     }
 }
