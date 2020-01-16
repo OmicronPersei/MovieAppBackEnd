@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import springboothackathon.models.Movie;
 
 @Repository
-public interface MovieRepository extends JpaRepository<Movie, Long>
+public interface MovieTableAccess extends JpaRepository<Movie, Long>
 {
 
 }

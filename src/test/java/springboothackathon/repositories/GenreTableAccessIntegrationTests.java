@@ -10,14 +10,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class GenreRepositoryIntegrationTests {
+public class GenreTableAccessIntegrationTests {
 
     @Autowired
-    private GenreRepository genreRepository;
+    private GenreTableAccess genreTableAccess;
 
     @Test
     public void testGetGenres() {
-        List<Genre> allGenres = genreRepository.findAll();
+        List<Genre> allGenres = genreTableAccess.findAll();
 
         assertTrue(allGenres.stream().anyMatch(g -> g.getName().equals("action")));
         assertTrue(allGenres.stream().anyMatch(g -> g.getName().equals("drama")));
