@@ -62,4 +62,22 @@ public class GenreRepositoryTests {
 
         verify(mockedGenreTableAccess).save(genreToAdd);
     }
+
+    @Test
+    public void testUpdateGenre() {
+        Genre genreToUpdate = new Genre();
+
+        genreRepository.update(genreToUpdate);
+
+        verify(mockedGenreTableAccess).save(genreToUpdate);
+    }
+
+    @Test
+    public void testDeleteGenre() {
+        Genre genreToDelete = new Genre();
+
+        genreRepository.delete(genreToDelete);
+
+        verify(mockedGenreTableAccess).delete(genreToDelete);
+    }
 }

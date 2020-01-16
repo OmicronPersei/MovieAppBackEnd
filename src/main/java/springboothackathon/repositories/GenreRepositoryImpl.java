@@ -33,11 +33,11 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public void update(Genre item) {
-
+        genreTableAccess.save(item);
     }
 
     @Override
-    public void delete(Predicate<Genre> p) {
-
+    public void delete(Genre item) {
+        genreTableAccess.delete(item);
     }
 }
