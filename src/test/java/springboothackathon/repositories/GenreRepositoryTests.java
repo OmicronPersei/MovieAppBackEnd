@@ -8,6 +8,7 @@ import springboothackathon.models.Genre;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
@@ -79,5 +80,30 @@ public class GenreRepositoryTests {
         genreRepository.delete(genreToDelete);
 
         verify(mockedGenreTableAccess).delete(genreToDelete);
+    }
+
+    @Test
+    public void testGetGenreByIdWhenGenreFound() {
+        Long id = 123L;
+        Genre expectedGenre = new Genre();
+        Optional<Genre> genreOptional = Optional.of(expectedGenre);
+
+        when(mockedGenreTableAccess.findById(id)).thenReturn(genreOptional);
+
+        Genre actual = genreRepository.getById(id);
+
+        assertSame(expectedGenre, actual);
+    }
+
+    @Test
+    public void testGetGenreByIdWhenGenreNOTFound() {
+        Long id = 123L;
+        Optional<Genre> genreOptional = Optional.empty();
+
+        when(mockedGenreTableAccess.findById(id)).thenReturn(genreOptional);
+
+        Genre actual = genreRepository.getById(id);
+
+        assertNull(actual);
     }
 }
