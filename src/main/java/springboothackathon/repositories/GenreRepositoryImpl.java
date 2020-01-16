@@ -5,6 +5,7 @@ import springboothackathon.models.Genre;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GenreRepositoryImpl implements GenreRepository {
 
@@ -16,7 +17,13 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public List<Genre> Get(Predicate<Genre> p) {
-        return genreTableAccess.findAll().stream().filter(p).collect(Collectors.toList());
+        List<Genre> fromFindAll = genreTableAccess.findAll();
+        Stream<Genre> streamFromFindAll = fromFindAll.stream();
+        Stream<Genre> streamFromStream = streamFromFindAll.filter(p);
+        List<Genre> resultSetListFromStream = streamFromStream.collect(Collectors.toList());
+
+
+        return resultSetListFromStream;
     }
 
     @Override
