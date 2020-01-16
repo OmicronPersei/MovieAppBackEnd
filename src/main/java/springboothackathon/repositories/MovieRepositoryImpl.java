@@ -57,23 +57,31 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public void add(Movie item) {
-
-    }
-
-    @Override
-    public void update(Movie item) {
-        String genreName = item.getGenreName();
-        Genre correspondingGenre = genreRepository.get(g -> g.getName().equals(genreName)).get(0);
-
-        Long genreId = correspondingGenre.getId();
-
-        item.setGenreId(genreId);
+        SetGenreIdFromName(item);
 
         movieTableAccess.save(item);
     }
 
     @Override
-    public void delete(Movie item) {
+    public void update(Movie item) {
+        SetGenreIdFromName(item);
 
+        movieTableAccess.save(item);
+    }
+
+    private void SetGenreIdFromName(Movie item)
+    {
+        String genreName = item.getGenreName();
+
+        Genre correspondingGenre = genreRepository.get(g -> g.getName().equals(genreName)).get(0);
+
+        Long genreId = correspondingGenre.getId();
+
+        item.setGenreId(genreId);
+    }
+
+    @Override
+    public void delete(Movie item) {
+        movieTableAccess.delete(item);
     }
 }

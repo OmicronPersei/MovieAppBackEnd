@@ -111,4 +111,35 @@ public class MovieRepositoryTests {
         assertEquals(genreId, m.getGenreId());
         verify(mockedMovieTableAccess).save(m);
     }
+
+    @Test
+    public void testAddMovie()
+    {
+        Movie m = new Movie();
+        String genreName = "action";
+        Long genreId = 9332L;
+        m.setGenreName(genreName);
+
+        Genre correspondingGenre = new Genre();
+        correspondingGenre.setId(genreId);
+        List<Genre> foundGenres = new ArrayList<Genre>();
+        foundGenres.add(correspondingGenre);
+        when(mockedGenreRepository.get(Mockito.any(Predicate.class))).thenReturn(foundGenres);
+
+        movieRepository.add(m);
+
+        verify(mockedMovieTableAccess).save(m);
+
+        assertEquals(genreId, m.getGenreId());
+    }
+
+    @Test
+    public void testDeleteMovie()
+    {
+        Movie m = new Movie();
+
+        movieRepository.delete(m);
+
+        verify(mockedMovieTableAccess).delete(m);
+    }
 }
