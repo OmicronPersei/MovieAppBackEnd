@@ -16,7 +16,7 @@ public class GenreRepositoryIntegrationTests {
     private GenreRepository genreRepository;
 
     @Test
-    public void myMethod() {
+    public void testGetGenres() {
         List<Genre> allGenres = genreRepository.findAll();
 
         assertTrue(allGenres.stream().anyMatch(g -> g.getName().equals("action")));
