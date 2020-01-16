@@ -15,13 +15,6 @@ public class MovieTableAccessIntegrationTests {
 
     @Test
     public void testGetMovies() {
-//        Movie singularMovie = movieTableAccess.findAll().stream().filter(m -> m.getName().equals("Pulp Fiction")).findFirst().get();
-//
-//        assertNotNull(singularMovie);
-//
-//        assertEquals("Pulp Fiction", singularMovie.getName());
-//        assertEquals("action", singularMovie.getGenreName());
-
         Movie newMovie = new Movie();
         newMovie.setName("Finding Nemo");
         newMovie.setGenreId(1L);
